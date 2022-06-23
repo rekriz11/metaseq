@@ -34,7 +34,7 @@ except ImportError:
 # tokenizer files
 BPE_MERGES = os.path.join(CHECKPOINT_FOLDER, "gpt2-merges.txt")
 BPE_VOCAB = os.path.join(CHECKPOINT_FOLDER, "gpt2-vocab.json")
-MODEL_FILE = os.path.join(CHECKPOINT_FOLDER, "reshard-model_part-")
+MODEL_FILE = os.path.join(CHECKPOINT_FOLDER, "reshard-model_part-0-shard0.pt")
 
 
 LAUNCH_ARGS = [

@@ -406,7 +406,7 @@ def load_checkpoint_to_cpu(path, arg_overrides=None, load_on_all_ranks=False) ->
         local_path = PathManager.get_local_path(path)
 
     # path to checkpoint...-shared.pt
-    paths_to_load = get_paths_to_load(local_path, suffix="-shard0.pt")
+    paths_to_load = get_paths_to_load(local_path, suffix="part-")
     try:
         if len(paths_to_load) > 1:
             state = _merge_flat_fsdp_shards([torch_load_cpu(f) for f in paths_to_load])
