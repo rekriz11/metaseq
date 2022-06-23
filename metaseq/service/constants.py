@@ -46,7 +46,7 @@ LAUNCH_ARGS = [
     "--bpe hf_byte_bpe",
     f"--merges-filename {BPE_MERGES}",  # TODO(susanz): hack for getting interactive_hosted working on public repo
     f"--vocab-filename {BPE_VOCAB}",  # TODO(susanz): hack for getting interactive_hosted working on public repo
-    f"--path {MODEL_PATH}",
+    f"--path {MODEL_FILE}",
     "--beam 1 --nbest 1",
     "--distributed-port 13000",
     "--checkpoint-shard-count 1",
