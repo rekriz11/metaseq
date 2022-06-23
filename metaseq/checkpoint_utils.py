@@ -345,7 +345,6 @@ def _is_checkpoint_sharded(checkpoint_files) -> bool:
 
 def get_paths_to_load(local_path, suffix="rank-"):
     checkpoint_files = glob(re.sub(f"{suffix}[0-9]+", f"{suffix}*", local_path))
-    import pdb; pdb.set_trace()
     if not _is_checkpoint_sharded(checkpoint_files):
         return [local_path]
     checkpoint_files_count = len(checkpoint_files)
