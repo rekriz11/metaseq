@@ -136,10 +136,9 @@ class LanguageModelingTask(LegacyTask):
 
     def __init__(self, args):
         super().__init__(args)
-
+        import pdb; pdb.set_trace()
         if not has_hf_tokenizers:
             raise ImportError("Please install tokenizers with: pip install tokenizers")
-        import pdb; pdb.set_trace()
         self.tokenizer = ByteLevelBPETokenizer.from_file(
             args.vocab_filename, args.merges_filename
         )
