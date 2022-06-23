@@ -29,7 +29,7 @@ except ImportError:
     # reshard-model_part-5.pt
     # reshard-model_part-6.pt
     # reshard-model_part-7.pt
-    CHECKPOINT_FOLDER = "/exp/rkriz/models/OPT/175B/"
+    CHECKPOINT_FOLDER = "/exp/rkriz/models/OPT/66B/"
 
 # tokenizer files
 BPE_MERGES = os.path.join(CHECKPOINT_FOLDER, "gpt2-merges.txt")
