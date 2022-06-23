@@ -251,6 +251,7 @@ def _spawn_helper(main, cfg, kwargs):
 
 
 def call_main(cfg: MetaseqConfig, main, **kwargs):
+    import pdb; pdb.set_trace()
     if cfg.distributed_training.distributed_init_method is None:
         infer_init_method(cfg.distributed_training)
 
