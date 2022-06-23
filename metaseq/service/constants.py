@@ -9,8 +9,10 @@ MAX_SEQ_LEN = 2048
 BATCH_SIZE = 2048  # silly high bc we dynamically batch by MAX_BATCH_TOKENS
 MAX_BATCH_TOKENS = 3072
 DEFAULT_PORT = 6010
-MODEL_PARALLEL = 8
-TOTAL_WORLD_SIZE = 8
+MODEL_PARALLEL = 2
+TOTAL_WORLD_SIZE = 2
+#MODEL_PARALLEL = 8
+#TOTAL_WORLD_SIZE = 8
 
 
 try:
@@ -29,12 +31,14 @@ except ImportError:
     # reshard-model_part-5.pt
     # reshard-model_part-6.pt
     # reshard-model_part-7.pt
-    CHECKPOINT_FOLDER = "/exp/rkriz/models/OPT/66B/"
+    CHECKPOINT_FOLDER = "/exp/rkriz/models/OPT/125M/"
+    #CHECKPOINT_FOLDER = "/exp/rkriz/models/OPT/66B/"
 
 # tokenizer files
 BPE_MERGES = os.path.join(CHECKPOINT_FOLDER, "gpt2-merges.txt")
 BPE_VOCAB = os.path.join(CHECKPOINT_FOLDER, "gpt2-vocab.json")
-MODEL_FILE = os.path.join(CHECKPOINT_FOLDER, "reshard-model_part-0-shard0.pt")
+MODEL_FILE = os.path.join(CHECKPOINT_FOLDER, "reshard-model_part-0.pt")
+#MODEL_FILE = os.path.join(CHECKPOINT_FOLDER, "reshard-model_part-0-shard0.pt")
 
 
 LAUNCH_ARGS = [
