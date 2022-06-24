@@ -19,7 +19,7 @@ model.tie_weights()
 max_mem = 4686198491 # 4G
 
 device_map = infer_auto_device_map(
-    model.model, 
+    model, 
     max_memory={0: max_mem, 1: max_mem},
     no_split_module_classes=["OPTDecoderLayer"], 
     dtype='float16'
@@ -27,11 +27,11 @@ device_map = infer_auto_device_map(
 
 print(device_map)
 
-full_model_device_map = {f"model.{k}": v for k, v in device_map.items()}
-full_model_device_map["lm_head"] = 0
+#full_model_device_map = {f"model.{k}": v for k, v in device_map.items()}
+#full_model_device_map["lm_head"] = 0
 
 load_checkpoint_in_model(
-    model.model, 
+    model, 
     weights_path, 
     device_map=full_model_device_map, 
     offload_folder=None, 
