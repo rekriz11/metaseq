@@ -17,6 +17,9 @@ with init_empty_weights():
 model.tie_weights()
 print("model: {}\n\n".format(model))
 
+#model.decoder.final_layer_norm.weight
+#model.decoder.layers.31.final_layer_norm.weight
+
 max_mem = 4686198491 # 4G
 
 device_map = infer_auto_device_map(
@@ -42,8 +45,7 @@ load_checkpoint_in_model(
 )
 model.tie_weights()
 
-
-dispatch_model(model, device_map=full_model_device_map)
+dispatch_model(model, device_map=device_map)
 
 inputs = tokenizer("Hugging Face is pushing the convention that a unicorn with two horns becomes a llama.", return_tensors="pt")
 output = model.generate(inputs["input_ids"].to(0), max_length=50, do_sample=True)
