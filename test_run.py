@@ -28,7 +28,7 @@ device_map = infer_auto_device_map(
 print(device_map)
 
 load_checkpoint_in_model(
-    model.model, 
+    model.model.model, 
     weights_path, 
     device_map=device_map, 
     offload_folder=None, 
