@@ -30,6 +30,19 @@ device_map = infer_auto_device_map(
     dtype='float16'
 )
 
+if any([k == 'disk' for k in device_map.values()]):
+    offload_folder = "/exp/rkriz/models/OPT/30B/offload_folder"
+else:
+    offload_folder = None
+
+if '30b' in checkpoint:
+    # Set a few layers to use the disk manually to ensure enough RAM for the 30B checkpoint.
+    device_map['decoder.layers.23'] = 'disk'
+    device_map['decoder.layers.24'] = 'disk'
+    device_map['decoder.layers.25'] = 'disk'
+    device_map['decoder.layers.26'] = 'disk'
+    device_map['decoder.layers.27'] = 'disk'
+
 print(device_map)
 
 #full_model_device_map = {f"model.{k}": v for k, v in device_map.items()}
@@ -39,7 +52,7 @@ load_checkpoint_in_model(
     model.model, 
     weights_path, 
     device_map=device_map, 
-    offload_folder="/exp/rkriz/models/OPT/30B/", 
+    offload_folder=offload_folder, 
     dtype='float16', 
     offload_state_dict=True
 )
