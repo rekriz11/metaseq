@@ -33,7 +33,7 @@ print(device_map)
 load_checkpoint_in_model(
     model, 
     weights_path, 
-    device_map=full_model_device_map, 
+    device_map=device_map, 
     offload_folder=None, 
     dtype='float16', 
     offload_state_dict=True
