@@ -15,6 +15,7 @@ config = AutoConfig.from_pretrained(checkpoint)
 with init_empty_weights():
     model = AutoModelForCausalLM.from_config(config)
 model.tie_weights()
+print("model: {}\n\n".format(model))
 
 max_mem = 4686198491 # 4G
 
