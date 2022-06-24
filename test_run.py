@@ -39,7 +39,7 @@ load_checkpoint_in_model(
     model, 
     weights_path, 
     device_map=device_map, 
-    offload_folder=None, 
+    offload_folder="/exp/rkriz/models/OPT/30B/", 
     dtype='float16', 
     offload_state_dict=True
 )
