@@ -29,6 +29,8 @@ device_map['decoder.embed_tokens.weight'] = 0
 
 print(device_map)
 
+import pdb; pdb.set_trace()
+
 load_checkpoint_in_model(
     model.model, 
     weights_path, 
