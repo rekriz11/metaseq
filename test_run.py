@@ -29,7 +29,8 @@ max_mem = 10000000000
 
 device_map = infer_auto_device_map(
     model.model, 
-    max_memory={0: max_mem, 1: max_mem, 2: max_mem, 3: max_mem, 4: max_mem, 5: max_mem, 6: max_mem, 7: max_mem}
+    max_memory={0: max_mem, 1: max_mem, 2: max_mem, 3: max_mem, \
+    4: max_mem, 5: max_mem, 6: max_mem, 7: max_mem},
     no_split_module_classes=["OPTDecoderLayer"], 
     dtype='float16'
 )
