@@ -36,7 +36,7 @@ if '30b' in checkpoint:
     device_map['decoder.layers.26'] = 'disk'
     device_map['decoder.layers.27'] = 'disk'
 
-device_map
+print("Device_map: {}".format(device_map))
 
 load_checkpoint_and_dispatch(
     model.model, 
