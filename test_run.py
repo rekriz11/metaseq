@@ -1,7 +1,7 @@
 from huggingface_hub import snapshot_download
 
-checkpoint = 'facebook/opt-2.7b'
-weights_path = snapshot_download(checkpoint, cache_dir="/exp/rkriz/models/OPT/2.7B/")
+checkpoint = 'facebook/opt-30b'
+weights_path = snapshot_download(checkpoint, cache_dir="/exp/rkriz/models/OPT/30B/")
 import os
 files = os.listdir(weights_path)
 weights_path = os.path.join(weights_path, 'pytorch_model.bin') if 'pytorch_model.bin' in files else weights_path
@@ -49,19 +49,6 @@ dispatch_model(model, device_map=device_map)
 
 inputs = tokenizer("Hugging Face is pushing the convention that a unicorn with two horns becomes a llama.", return_tensors="pt")
 output = model.generate(inputs["input_ids"].to(0), max_length=50)
-
-'''load_checkpoint_and_dispatch(
-    model.model, 
-    weights_path, 
-    device_map=device_map, 
-    offload_folder=None, 
-    dtype='float16', 
-    offload_state_dict=True
-)
-model.tie_weights()
-
-inputs = tokenizer("Hugging Face is pushing the convention that a unicorn with two horns becomes a llama.", return_tensors="pt")
-output = model.generate(inputs["input_ids"].to(0), max_length=50, do_sample=True)'''
 
 print(tokenizer.decode(output[0].tolist()))
 
