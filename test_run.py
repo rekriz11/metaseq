@@ -1,7 +1,8 @@
 from huggingface_hub import snapshot_download
 
 checkpoint = 'facebook/opt-30b'
-weights_path = snapshot_download(checkpoint, cache_dir="/exp/rkriz/models/OPT/30B/")
+#weights_path = snapshot_download(checkpoint, cache_dir="/exp/rkriz/models/OPT/30B/")
+weights_path = "/exp/rkriz/models/OPT/30B/facebook--opt-30b.main.463007d7da4e87fe962909a027811a8c0b32ede8/"
 import os
 files = os.listdir(weights_path)
 weights_path = os.path.join(weights_path, 'pytorch_model.bin') if 'pytorch_model.bin' in files else weights_path
