@@ -27,6 +27,9 @@ device_map = infer_auto_device_map(
 
 print(device_map)
 
+full_model_device_map = {f"model.{k}": v for k, v in device_map.items()}
+full_model_device_map["lm_head"] = 0
+
 load_checkpoint_in_model(
     model.model, 
     weights_path, 
@@ -37,8 +40,7 @@ load_checkpoint_in_model(
 )
 model.tie_weights()
 
-#full_model_device_map = {f"model.{k}": v for k, v in device_map.items()}
-#full_model_device_map["lm_head"] = 0
+
 dispatch_model(model, device_map=full_model_device_map)
 
 inputs = tokenizer("Hugging Face is pushing the convention that a unicorn with two horns becomes a llama.", return_tensors="pt")
