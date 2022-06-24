@@ -21,20 +21,18 @@ print("model: {}\n\n".format(model))
 #model.decoder.final_layer_norm.weight
 #model.decoder.layers.31.final_layer_norm.weight
 
+## For 2.7B
 ## max_mem = 4686198491 # 4G
-## max_memory={0: max_mem, 1: max_mem},
+## max_memory={0: max_mem, 1: max_mem}
+
+max_mem = 10000000000
 
 device_map = infer_auto_device_map(
     model.model, 
+    max_memory={0: max_mem, 1: max_mem, 2: max_mem, 3: max_mem, 4: max_mem, 5: max_mem, 6: max_mem, 7: max_mem}
     no_split_module_classes=["OPTDecoderLayer"], 
     dtype='float16'
 )
-
-if any([k == 'disk' for k in device_map.values()]):
-    offload_folder = "/exp/rkriz/models/OPT/30B/offload_folder"
-else:
-    offload_folder = None
-
 if '30b' in checkpoint:
     # Set a few layers to use the disk manually to ensure enough RAM for the 30B checkpoint.
     device_map['decoder.layers.23'] = 'disk'
@@ -42,6 +40,12 @@ if '30b' in checkpoint:
     device_map['decoder.layers.25'] = 'disk'
     device_map['decoder.layers.26'] = 'disk'
     device_map['decoder.layers.27'] = 'disk'
+
+if any([k == 'disk' for k in device_map.values()]):
+    offload_folder = "/exp/rkriz/models/OPT/30B/offload_folder"
+else:
+    offload_folder = None
+
 
 print(device_map)
 
