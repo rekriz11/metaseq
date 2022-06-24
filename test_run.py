@@ -48,7 +48,7 @@ model.tie_weights()
 dispatch_model(model, device_map=device_map)
 
 inputs = tokenizer("Hugging Face is pushing the convention that a unicorn with two horns becomes a llama.", return_tensors="pt")
-output = model.generate(inputs["input_ids"].to(0), max_length=50, do_sample=True)
+output = model.generate(inputs["input_ids"].to(0), max_length=50)
 
 '''load_checkpoint_and_dispatch(
     model.model, 
