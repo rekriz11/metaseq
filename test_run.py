@@ -21,11 +21,11 @@ print("model: {}\n\n".format(model))
 #model.decoder.final_layer_norm.weight
 #model.decoder.layers.31.final_layer_norm.weight
 
-max_mem = 4686198491 # 4G
+## max_mem = 4686198491 # 4G
+## max_memory={0: max_mem, 1: max_mem},
 
 device_map = infer_auto_device_map(
     model.model, 
-    max_memory={0: max_mem, 1: max_mem},
     no_split_module_classes=["OPTDecoderLayer"], 
     dtype='float16'
 )
