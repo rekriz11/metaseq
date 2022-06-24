@@ -30,7 +30,7 @@ device_map['decoder.embed_tokens.weight'] = 0
 print(device_map)
 
 load_checkpoint_and_dispatch(
-    model.model, 
+    model, 
     weights_path, 
     device_map=device_map, 
     offload_folder=None, 
