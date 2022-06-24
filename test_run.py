@@ -49,6 +49,7 @@ else:
 
 
 print(device_map)
+print(offload_folder)
 
 #full_model_device_map = {f"model.{k}": v for k, v in device_map.items()}
 #full_model_device_map["lm_head"] = 0
