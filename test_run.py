@@ -33,7 +33,7 @@ full_model_device_map["lm_head"] = 0
 load_checkpoint_in_model(
     model.model, 
     weights_path, 
-    device_map=device_map, 
+    device_map=full_model_device_map, 
     offload_folder=None, 
     dtype='float16', 
     offload_state_dict=True
