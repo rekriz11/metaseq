@@ -25,6 +25,8 @@ device_map = infer_auto_device_map(
     dtype='float16'
 )
 
+device_map['decoder.embed_tokens.weight'] = 0
+
 print(device_map)
 
 load_checkpoint_and_dispatch(
